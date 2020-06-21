@@ -1,10 +1,13 @@
+import { Route } from '@angular/compiler/src/core';
 import { Injectable, Type } from '@angular/core';
 import {
     ActivatedRouteSnapshot,
     CanActivate,
     CanActivateChild,
     CanDeactivate,
+    CanLoad,
     RouterStateSnapshot,
+    UrlSegment,
 } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -12,7 +15,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class RouteGuard
-    implements CanActivate, CanActivateChild, CanDeactivate<any> {
+    implements CanActivate, CanActivateChild, CanDeactivate<any>, CanLoad {
     // Can also return UrlTree, or Promise/Observable<boolean | UrlTree>
     canActivate(
         route: ActivatedRouteSnapshot,
@@ -46,5 +49,13 @@ export class RouteGuard
             observer.next(true);
             observer.complete();
         });
+    }
+
+    canLoad(
+        route: Route,
+        segments: UrlSegment[]
+    ): boolean | Observable<boolean> | Promise<boolean> {
+        console.log('   canLoad: ', segments.toString());
+        return false;
     }
 }

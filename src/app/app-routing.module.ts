@@ -49,6 +49,7 @@ const routes: Routes = [
                         data: {
                             routeData: 'investmentsRoute',
                         },
+                        canLoad: [RouteGuard], // prevents network call (unlike canActivate which loads module regardless)
                         loadChildren: () =>
                             import('./investments/investments.module').then(
                                 (m) => m.InvestmentsModule
