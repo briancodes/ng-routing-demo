@@ -18,7 +18,8 @@ export class RouteGuard
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): boolean {
-        console.log('   canActivate: ', state.url);
+        const segment = route.url.toString() || `''`;
+        console.log('   canActivate: ', segment, state.url);
         return true;
     }
 
@@ -26,7 +27,8 @@ export class RouteGuard
         childRoute: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): boolean {
-        console.log('   canActivateChild: ', state.url);
+        const segment = childRoute.url.toString() || `''`;
+        console.log('   canActivateChild: ', segment, state.url);
         return true;
     }
 

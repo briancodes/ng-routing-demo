@@ -16,9 +16,7 @@ const routes: Routes = [
         canActivate: [RouteGuard], // triggered once for the route
         children: [
             {
-                // component-less path
-                // param and data get merged with childs param and data maps
-                path: ':id',
+                path: ':id', // component-less path. Param & data merged with childs param & data maps
                 data: {
                     componentLessRoute: 'id',
                 },
