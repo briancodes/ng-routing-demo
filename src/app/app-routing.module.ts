@@ -46,6 +46,16 @@ const routes: Routes = [
                         },
                         canDeactivate: [RouteGuard],
                     },
+                    {
+                        path: 'investments',
+                        data: {
+                            routeData: 'investmentsRoute',
+                        },
+                        loadChildren: () =>
+                            import('./investments/investments.module').then(
+                                (m) => m.InvestmentsModule
+                            ),
+                    },
                 ],
             },
         ],

@@ -38,6 +38,10 @@ export class HeaderComponent implements OnInit {
                 name: '/accounts/1/credit',
                 route: ['/', 'accounts', '1', 'credit'],
             },
+            {
+                name: '/accounts/1/investments',
+                route: ['/', 'accounts', '1', 'investments'],
+            },
         ];
     }
 }
