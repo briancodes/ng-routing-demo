@@ -4,6 +4,7 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { DetailComponent } from './accounts/detail.component';
 import { CreditComponent } from './credit/credit.component';
 import { CurrentComponent } from './current/current.component';
+import { RouteGuard } from './shared/guards/route.guards';
 
 const routes: Routes = [
     {
@@ -12,6 +13,7 @@ const routes: Routes = [
         data: {
             accountsRoute: 'data',
         },
+        canActivate: [RouteGuard], // triggered once for the route
         children: [
             {
                 // component-less path
@@ -20,6 +22,7 @@ const routes: Routes = [
                 data: {
                     componentLessRoute: 'id',
                 },
+                canActivateChild: [RouteGuard], // triggered initial and moving between children
                 children: [
                     {
                         path: '',
@@ -41,6 +44,7 @@ const routes: Routes = [
                         data: {
                             routeData: 'currentRoute',
                         },
+                        canDeactivate: [RouteGuard],
                     },
                 ],
             },
@@ -51,5 +55,6 @@ const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
+    providers: [],
 })
 export class AppRoutingModule {}

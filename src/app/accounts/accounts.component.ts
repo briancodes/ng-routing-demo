@@ -6,12 +6,7 @@ const log = console.log;
 @Component({
     selector: 'app-accounts',
     template: `
-        <p>
-            app-accounts component
-        </p>
-        <p>
-            app-accounts - router
-        </p>
+        <p>app-accounts - router</p>
         <router-outlet></router-outlet>
     `,
     styles: [],
